@@ -11,7 +11,7 @@ const Navbar = () => {
           <nav className="flex items-center justify-between">
             <ul className="flex space-x-8 ml-4">
               {navs.map((nav) => (
-                <li key={nav.name}>{nav.name}</li>
+                <li className="cursor-pointer hover:text-cyan-500" key={nav.name}>{nav.name}</li>
               ))}
             </ul>
             <div className="flex">

@@ -1,8 +1,9 @@
 import { EyeIcon, HandThumbUpIcon, ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/outline";
 
-import Menu from "@/components/Navbar/Menu";
+import Categories from "@/components/categories";
 
 export default function Home() {
+
   const categories = [
     {
       name: "css",
@@ -28,14 +29,14 @@ export default function Home() {
       <div className="relative w-48">
         <div className="sticky top-20">
           <h3 className="py-1 pl-2 font-semibold text-slate-900">分类</h3>
-          <Menu data={categories} />
+          <Categories data={categories} />
         </div>
       </div>
       <div className="flex-1 mx-4 bg-white">
         <div className="relative">
           <ul className="flex items-center h-14 px-3 pl-8 space-x-6 text-base border-slate-200 border-b">
-            <li className="">最新</li>
-            <li className="">热门</li>
+            <li className="hover:text-cyan-500 cursor-pointer">最新</li>
+            <li className="hover:text-cyan-500 cursor-pointer">热门</li>
           </ul>
           {/* list */}
           <div className="relative px-5">
@@ -43,7 +44,7 @@ export default function Home() {
               <div key={key} className="py-4 border-b border-slate-100">
                 <div className="flex items-center">
                   <div className="flex-1 flex flex-col">
-                    <a className="text-base font-semibold text-slate-800" href="">
+                    <a className="text-base font-semibold text-slate-800 hover:text-cyan-500 hover:underline" href="">
                       C 语言函数完全指南：创建、调用、参数传递、返回值解析
                     </a>
                     <div className="mt-4 text-sm text-slate-700 leading-normal line-clamp-2">
