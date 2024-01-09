@@ -1,113 +1,92 @@
-import Image from 'next/image'
+import { EyeIcon, HandThumbUpIcon, ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/outline";
+
+import Menu from "@/components/Navbar/Menu";
 
 export default function Home() {
+  const categories = [
+    {
+      name: "css",
+      children: [{ name: "tailwind" }]
+    },
+    {
+      name: "react",
+      children: [{ name: "umijs" }, { name: "nextjs" }]
+    },
+    {
+      name: "node"
+    },
+    {
+      name: "golang"
+    },
+    {
+      name: "others"
+    }
+  ];
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="flex">
+      <div className="relative w-48">
+        <div className="sticky top-20">
+          <h3 className="py-1 pl-2 font-semibold text-slate-900">分类</h3>
+          <Menu data={categories} />
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className="flex-1 mx-4 bg-white">
+        <div className="relative">
+          <ul className="flex items-center h-14 px-3 pl-8 space-x-6 text-base border-slate-200 border-b">
+            <li className="">最新</li>
+            <li className="">热门</li>
+          </ul>
+          {/* list */}
+          <div className="relative px-5">
+            {new Array(10).fill(1).map((_, key) => (
+              <div key={key} className="py-4 border-b border-slate-100">
+                <div className="flex items-center">
+                  <div className="flex-1 flex flex-col">
+                    <a className="text-base font-semibold text-slate-800" href="">
+                      C 语言函数完全指南：创建、调用、参数传递、返回值解析
+                    </a>
+                    <div className="mt-4 text-sm text-slate-700 leading-normal line-clamp-2">
+                      C语言中的函数函数是一段代码块，只有在被调用时才会运行。您可以将数据（称为参数）传递给函数。函数用于执行某些操作，它们对于重用代码很重要：定义一次代码，并多次使用。预定义函数事实证明，您已经知道什么是函数了例如，main()是一个函数，用于执行代码，pri
+                    </div>
+                  </div>
+                  {key % 2 == 0 && (
+                    <div className="ml-6 w-[7.5rem] h-[5rem]">
+                      <img
+                        className="w-full h-full rounded-md object-cover"
+                        src="https://img-hello-world.oss-cn-beijing.aliyuncs.com/imgs/2afb00b22db1a10a2712fb8a7f580135.png"
+                        alt=""
+                      />
+                    </div>
+                  )}
+                </div>
+                <div className="flex mt-4 space-x-6">
+                  <span className="flex items-center text-sm">
+                    <EyeIcon className="h-4 w-4" />
+                    <span className="ml-1">10</span>
+                  </span>
+                  <span className="flex items-center text-sm">
+                    <HandThumbUpIcon className="h-4 w-4" />
+                    <span className="ml-1">10</span>
+                  </span>
+                  <span className="flex items-center text-sm">
+                    <ChatBubbleLeftEllipsisIcon className="h-4 w-4" />
+                    <span className="ml-1">10</span>
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className="w-80">
+        {/* 测试10条数据 */}
+        {new Array(10).fill(0).map((_, index) => (
+          <div key={index} className="bg-white px-5 py-3 mb-4">
+            hello {index}
+          </div>
+        ))}
       </div>
-    </main>
-  )
+    </div>
+  );
 }
